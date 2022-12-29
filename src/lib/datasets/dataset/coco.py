@@ -21,6 +21,7 @@ class COCO(data.Dataset):
   def __init__(self, opt, split):
     super(COCO, self).__init__()
     self.data_dir = os.path.join(opt.data_dir, 'coco')
+    print("????????????????????????????",self.data_dir)
     self.img_dir = os.path.join(self.data_dir, '{}2017'.format(split))
     if split == 'test':
       self.annot_path = os.path.join(
@@ -77,6 +78,7 @@ class COCO(data.Dataset):
     self.opt = opt
 
     print('==> initializing coco 2017 {} data.'.format(split))
+    print("path",self.annot_path)
     self.coco = coco.COCO(self.annot_path)
     self.images = self.coco.getImgIds()
     self.num_samples = len(self.images)
